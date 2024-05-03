@@ -6,14 +6,18 @@
 
     nextButton.addEventListener('click', handleNextSlide);
     prevButton.addEventListener('click', handlePrevSlide);
-    dotList.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
-
+    dotList.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(dot, index)));
     
     function handleNextSlide() { // Функція для перемикання наступного слайда
         const activeElement = listElement.querySelector('.active');
         const nextElement = activeElement.nextElementSibling;
         if (nextElement) {
             switchActive(activeElement, nextElement);
+            const index = Array.from(listElement.children).indexOf(nextElement);
+            console.log(index);
+            console.log(listElement.children);
+            console.log(nextElement);
+            illuminationDots(dotList[index]);
             toggleButtonVisibility();
         }
     }
@@ -23,15 +27,27 @@
         const prevElement = activeElement.previousElementSibling;
         if (prevElement) {
             switchActive(activeElement, prevElement);
+            const index = Array.from(listElement.children).indexOf(prevElement);
+            illuminationDots(dotList[index]);
             toggleButtonVisibility();
         }
     }
 
-    function goToSlide(index) {// Функція для перемикання на слайд за індексом
+    function goToSlide(dot, index) {// Функція для перемикання на слайд за індексом
         const activeElement = listElement.querySelector('.active');
         const targetElement = listElement.children[index];
         switchActive(activeElement, targetElement);
+        illuminationDots(dot);
         toggleButtonVisibility();
+    }
+
+    function illuminationDots(dot){
+        dotList.forEach((item) =>{
+            if (item.classList.contains('active')){
+                item.classList.remove('active');
+            }
+            dot.classList.add('active');
+        });
     }
 
     function switchActive(current, target) {

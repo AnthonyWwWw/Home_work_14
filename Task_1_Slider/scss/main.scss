@@ -17,11 +17,13 @@
   display: flex;
   justify-content: center;
 }
+
 .slider {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .slider__prev,
 .slider__next {
   display: flex;
@@ -42,12 +44,14 @@
 
   }
 }
+
 .slider ul {
   display: flex;
   max-width: 960px;
   overflow: hidden;
   padding: 0;
 }
+
 .slider li {
   display: none;
   font-size: 20px;
@@ -60,6 +64,7 @@
   opacity: 0;
   animation: fadeInFromNone 0.5s ease-out;
 }
+
 @keyframes fadeInFromNone {
   from {
       opacity: 0;
@@ -102,11 +107,18 @@
   transition-duration: 1s;
   transition-property: all;
   margin: 0px 10px 0px 10px;
+  
+  .active{
+    background-color: #97ac74;
+  }
 
   &:hover{
     height: 20px;
     width: 20px;
     margin: 0px 5px 0px 5px;   
   }
+}
+.dot.active{
+  background-color: #c9ec90;
 }
 ///--------------------END-body-------------------///
