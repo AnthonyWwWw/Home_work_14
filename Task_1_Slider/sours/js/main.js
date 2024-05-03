@@ -14,9 +14,6 @@
         if (nextElement) {
             switchActive(activeElement, nextElement);
             const index = Array.from(listElement.children).indexOf(nextElement);
-            console.log(index);
-            console.log(listElement.children);
-            console.log(nextElement);
             illuminationDots(dotList[index]);
             toggleButtonVisibility();
         }
